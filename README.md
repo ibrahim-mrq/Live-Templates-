@@ -2,8 +2,7 @@
 # Use
 
 ##### Setting => Editor => Live Templates
-##### to use default context
-##### variableOfType("android.content.Context")
+##### use default context > variableOfType("android.content.Context")
 
 <b>
 <b>
