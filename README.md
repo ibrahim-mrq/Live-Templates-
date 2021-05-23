@@ -2,7 +2,7 @@
 # Use
 
 ##### Setting => Editor => Live Templates
-##### use default context > variableOfType("android.content.Context")
+##### use default context ===> edit variable => context = variableOfType("android.content.Context")
 
 <b>
 <b>
