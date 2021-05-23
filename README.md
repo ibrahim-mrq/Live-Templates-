@@ -73,16 +73,34 @@ public void onBackPressed() {
 
 com.mrq.library.Toasty.Toasty.custom($context$, "$message$",com.mrq.library.Toasty.ToastyUtils.getDrawable(this, $img$) , Toasty.LENGTH_SHORT,true).show();
 
+```
+
+    
+```java
+
 com.mrq.library.Toasty.Toasty.error($context$, "$message$", Toasty.LENGTH_SHORT,true).show();
+
+```
+    
+```java
 
 com.mrq.library.Toasty.Toasty.info($context$, "$message$", Toasty.LENGTH_SHORT,true).show();
 
+```
+    
+```java
+
+
 com.mrq.library.Toasty.Toasty.success($context$, "$message$", Toasty.LENGTH_SHORT,true).show();
+
+```
+    
+```java
 
 com.mrq.library.Toasty.Toasty.warning($context$, "$message$", Toasty.LENGTH_SHORT, true).show();
 
 ```
-
+    
 ## YoYo
 
 ```YoYo
