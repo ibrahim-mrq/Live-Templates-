@@ -9,6 +9,18 @@
 <b>
 <b>
     
+    
+        
+## ColorPicker
+
+```java
+    
+private void $Name$() {
+
+}
+
+```
+    
 ## ColorPicker
 
 ```java
