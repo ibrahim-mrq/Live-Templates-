@@ -115,7 +115,7 @@ com.mrq.library.Toasty.Toasty.warning($context$, "$message$", Toasty.LENGTH_SHOR
     
 ## YoYo
 
-```YoYo
+```java
 
 com.mrq.library.YoYo.YoYo.with(com.mrq.library.YoYo.Techniques.Tada)
     .duration(1000)
@@ -132,7 +132,7 @@ com.mrq.library.YoYo.YoYo.with(com.mrq.library.YoYo.Techniques.Tada)
 
 ## Adapter
 
-```Adapter
+```java
 
 #if (${PACKAGE_NAME} && ${PACKAGE_NAME} != "")package ${PACKAGE_NAME};#end
 
@@ -209,7 +209,7 @@ public class ${NAME}Adapter extends RecyclerView.Adapter<${NAME}Adapter.${NAME}V
 
 ## Adapter Filter
 
-```AdapterFilter
+```java
 
 #if (${PACKAGE_NAME} && ${PACKAGE_NAME} != "")package ${PACKAGE_NAME};#end
 
@@ -323,9 +323,98 @@ protected void publishResults(CharSequence constraint, FilterResults results) {
 
 ```
 
+    
+## Adapter SectionTitle
+
+```java
+#if (${PACKAGE_NAME} && ${PACKAGE_NAME} != "")package ${PACKAGE_NAME};#end
+
+import android.annotation.SuppressLint;
+import android.content.Context;
+import android.content.Intent;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.RecyclerView;
+import com.mrq.library.FastScroll.SectionTitleProvider;
+import java.util.ArrayList;
+
+public class ${NAME}Adapter extends RecyclerView.Adapter<${NAME}Adapter.${NAME}ViewHolder> 
+ implements SectionTitleProvider {
+
+    private static Context mContext;
+    private ArrayList<${Model_Name}> list;
+    private ${Interface_Name}Interface anInterface;
+
+    public ${NAME}Adapter(ArrayList<${Model_Name}> list, Context mContext) {
+        this.list = list;
+        ${NAME}Adapter.mContext = mContext;
+    }
+
+    public ${NAME}Adapter(ArrayList<${Model_Name}> list, Context mContext, ${Interface_Name}Interface anInterface) {
+        this.list = list;
+        ${NAME}Adapter.mContext = mContext;
+        this.anInterface = anInterface;
+    }
+
+    @NonNull
+    @Override
+    public ${NAME}ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.${design_Name}, parent, false);
+        return new ${NAME}ViewHolder(v);
+    }
+
+    @Override
+    public void onBindViewHolder(@NonNull ${NAME}ViewHolder holder, final int position) {
+        final ${Model_Name} model = list.get(position);
+        holder.bind(model);
+
+    }
+
+    @Override
+    public int getItemCount() {
+    //    return list.size();
+         return (list != null ? list.size() : 0);
+    }
+    
+    private String getData(int position) {
+        return list.get(position);
+    }
+
+    @Override
+    public String getSectionTitle(int position) {
+        return getData(position).substring(0, 1);
+    }
+    
+    static class ${NAME}ViewHolder extends RecyclerView.ViewHolder {
+
+        private TextView tv_title;
+
+        private ${NAME}ViewHolder(@NonNull View itemView) {
+            super(itemView);
+
+            tv_title = itemView.findViewById(R.id.custom_tv_title);
+
+        }
+
+        @SuppressLint("SetTextI18n")
+        private void bind(${Model_Name} model) {
+
+        }
+    }
+
+}
+
+```
+
+    
+    
 ## custom Interface
 
-```customInterface
+```java
 
 #if (${PACKAGE_NAME} && ${PACKAGE_NAME} != "")package ${PACKAGE_NAME};#end
         #parse("File Header.java")
