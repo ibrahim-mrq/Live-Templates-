@@ -3,6 +3,8 @@
 
 ##### Setting => Editor => Live Templates
 ##### use default context ===> edit variable => context = variableOfType("android.content.Context")
+##### applicable contexts  => out onCreate use (Declaration) 
+##### applicable contexts  => inside onCreate use (Expression) 
 
 <b>
 <b>
