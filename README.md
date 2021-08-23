@@ -11,8 +11,32 @@
 <b>
 <b>
     
+## BaseAdapter
+
+```java
     
-        
+BaseAdapter<$model$> adapter = new BaseAdapter<$model$>($context$, list) {
+            @Override
+            public RecyclerView.ViewHolder setViewHolder(android.view.ViewGroup parent) {
+                final android.view.View view = android.view.LayoutInflater.from(getApplicationContext())
+                        .inflate(R.layout.$layout$, parent, false);
+                return new $holder$(getApplicationContext(), view);
+            }
+
+            @Override
+            public void onBindData(RecyclerView.ViewHolder holders, Inbox val) {
+                $holder$ holder = ($holder$) holders;
+//                com.bumptech.glide.Glide.with($context$).load("")
+//                        .placeholder(R.drawable.ic_launcher_background).into(holder.img);
+//                holder.getText().setText(val.getTitle());
+            }
+        };
+        rv.setAdapter(adapter);
+    
+    
+   
+```
+    
 ## fun
 
 ```java
@@ -429,6 +453,67 @@ public interface ${NAME}Interface {
 
 
 
+    
+    
+## custom BaseAdapter
+
+```java
+
+#if (${PACKAGE_NAME} && ${PACKAGE_NAME} != "")package ${PACKAGE_NAME};#end
+
+import android.content.Context;
+import android.view.ViewGroup;
+
+import androidx.recyclerview.widget.RecyclerView;
+
+import org.jetbrains.annotations.NotNull;
+
+import java.util.ArrayList;
+
+public abstract class BaseAdapter<T> extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
+
+    private Context mContext;
+    private ArrayList<T> list;
+
+    public abstract RecyclerView.ViewHolder setViewHolder(ViewGroup parent);
+
+    public abstract void onBindData(RecyclerView.ViewHolder holder, T val);
+
+    public BaseAdapter(Context mContext, ArrayList<T> list) {
+        this.mContext = mContext;
+        this.list = list;
+    }
+
+    @NotNull
+    @Override
+    public RecyclerView.ViewHolder onCreateViewHolder(@NotNull ViewGroup parent, int viewType) {
+        RecyclerView.ViewHolder holder = setViewHolder(parent);
+        holder.setIsRecyclable(false);
+        return holder;
+    }
+
+    @Override
+    public void onBindViewHolder(@NotNull RecyclerView.ViewHolder holder, int position) {
+        onBindData(holder, list.get(position));
+    }
+
+    @Override
+    public int getItemCount() {
+        return list.size();
+    }
+
+    public void addItems(ArrayList<T> savedCardItems) {
+        list = savedCardItems;
+        this.notifyDataSetChanged();
+    }
+
+    public T getItem(int position) {
+        return list.get(position);
+    }
+
+}
+
+```
 
 
 
