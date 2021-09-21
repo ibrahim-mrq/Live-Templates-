@@ -514,8 +514,107 @@ public abstract class BaseAdapter<T> extends RecyclerView.Adapter<RecyclerView.V
 }
 
 ```
+    
+    
+ ## custom Multi Adapter
+
+```java
+
+#if (${PACKAGE_NAME} && ${PACKAGE_NAME} != "")package ${PACKAGE_NAME};#end
+
+import android.annotation.SuppressLint;
+import android.content.Context;
+import android.content.Intent;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.RecyclerView;
+import java.util.ArrayList;
+
+public class ${NAME}Adapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
+
+    private Context mContext;
+    private ArrayList<${Model_Name}> list;
+    private int type;
+
+    public ${NAME}Adapter(ArrayList<${Model_Name}> list,int type, Context mContext) {
+        this.list = list;
+        this.type = type;
+        this.mContext = mContext;
+    }
+
+    @NonNull
+    @Override
+    public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+           View v;
+        if (type == Constants.TYPE_DECOST_PUBLICATIONS) {
+            v = LayoutInflater.from(parent.getContext()).inflate(R.layout.${design_Name1}, parent, false);
+            return new ${ViewHolder1}ViewHolder(v);
+        }
+        if (type == Constants.TYPE_LATEST_DECOST) {
+            v = LayoutInflater.from(parent.getContext()).inflate(R.layout.${design_Name2}, parent, false);
+            return new ${ViewHolder2}ViewHolder(v);
+        } else
+            return null;
+    }
+
+    @Override
+    public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, final int position) {
+        final ${Model_Name} model = list.get(position);
+        
+        if (holder instanceof ${ViewHolder1}ViewHolder) {
+            final ${ViewHolder1}ViewHolder holder1 = (${ViewHolder1}ViewHolder) holder;
+            holder1.bind(model);
+        }
+        if (holder instanceof ${ViewHolder2}ViewHolder) {
+            final ${ViewHolder2}ViewHolder holder2 = (${ViewHolder2}ViewHolder) holder;
+            holder2.bind(model);
+        }
+    }
+
+    @Override
+    public int getItemCount() {
+         return (list != null ? list.size() : 0);
+    }
+
+    static class ${ViewHolder1}ViewHolder extends RecyclerView.ViewHolder {
+
+        private TextView tv_title;
+
+        private ${ViewHolder1}ViewHolder(@NonNull View itemView) {
+            super(itemView);
+
+            tv_title = itemView.findViewById(R.id.custom_tv_title);
+
+        }
+
+        @SuppressLint("SetTextI18n")
+        private void bind(${Model_Name} model) {
+
+        }
+    }
+        static class ${ViewHolder2}ViewHolder extends RecyclerView.ViewHolder {
+
+        private TextView tv_title;
+
+        private ${ViewHolder2}ViewHolder(@NonNull View itemView) {
+            super(itemView);
+
+            tv_title = itemView.findViewById(R.id.custom_tv_title);
+
+        }
+
+        @SuppressLint("SetTextI18n")
+        private void bind(${Model_Name} model) {
+
+        }
+    }
+}
 
 
-
+```
 
 
