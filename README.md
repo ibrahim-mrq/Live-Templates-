@@ -160,6 +160,7 @@ com.mrq.library.YoYo.YoYo.with(com.mrq.library.YoYo.Techniques.Tada)
 
 ```java
 
+
 #if (${PACKAGE_NAME} && ${PACKAGE_NAME} != "")package ${PACKAGE_NAME};#end
 
 import android.annotation.SuppressLint;
@@ -176,19 +177,12 @@ import java.util.ArrayList;
 
 public class ${NAME}Adapter extends RecyclerView.Adapter<${NAME}Adapter.${NAME}ViewHolder> {
 
-    private static Context mContext;
-    private ArrayList<${Model_Name}> list;
-    private ${Interface_Name}Interface anInterface;
+     Context mContext;
+     ArrayList<${Model_Name}> list;
 
     public ${NAME}Adapter(ArrayList<${Model_Name}> list, Context mContext) {
         this.list = list;
-        ${NAME}Adapter.mContext = mContext;
-    }
-
-    public ${NAME}Adapter(ArrayList<${Model_Name}> list, Context mContext, ${Interface_Name}Interface anInterface) {
-        this.list = list;
-        ${NAME}Adapter.mContext = mContext;
-        this.anInterface = anInterface;
+        this.mContext = mContext;
     }
 
     @NonNull
@@ -199,15 +193,13 @@ public class ${NAME}Adapter extends RecyclerView.Adapter<${NAME}Adapter.${NAME}V
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ${NAME}ViewHolder holder, final int position) {
-        final ${Model_Name} model = list.get(position);
+    public void onBindViewHolder(@NonNull ${NAME}ViewHolder holder, int position) {
+        ${Model_Name} model = list.get(position);
         holder.bind(model);
-
     }
 
     @Override
     public int getItemCount() {
-    //    return list.size();
          return (list != null ? list.size() : 0);
     }
 
@@ -229,6 +221,7 @@ public class ${NAME}Adapter extends RecyclerView.Adapter<${NAME}Adapter.${NAME}V
     }
 
 }
+
 
 ```
 
