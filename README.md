@@ -185,6 +185,7 @@ public class ${NAME}Adapter extends RecyclerView.Adapter<${NAME}Adapter.${NAME}V
 
     public void setList(ArrayList<${Model_Name}> list) {
         this.list = list;
+        notifyDataSetChanged();
     }
 
     @NonNull
