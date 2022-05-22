@@ -159,18 +159,13 @@ com.mrq.library.YoYo.YoYo.with(com.mrq.library.YoYo.Techniques.Tada)
 ## Adapter
 
 ```java
-
-
+    
 #if (${PACKAGE_NAME} && ${PACKAGE_NAME} != "")package ${PACKAGE_NAME};#end
 
-import android.annotation.SuppressLint;
 import android.content.Context;
-import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
@@ -179,10 +174,17 @@ public class ${NAME}Adapter extends RecyclerView.Adapter<${NAME}Adapter.${NAME}V
 
      Context mContext;
      ArrayList<${Model_Name}> list;
-
-    public ${NAME}Adapter(ArrayList<${Model_Name}> list, Context mContext) {
-        this.list = list;
+    
+     public ${NAME}Adapter(Context mContext) {
         this.mContext = mContext;
+    }
+
+    public ArrayList<${Model_Name}> getList() {
+        return list;
+    }
+
+    public void setList(ArrayList<${Model_Name}> list) {
+        this.list = list;
     }
 
     @NonNull
@@ -205,16 +207,13 @@ public class ${NAME}Adapter extends RecyclerView.Adapter<${NAME}Adapter.${NAME}V
 
     static class ${NAME}ViewHolder extends RecyclerView.ViewHolder {
 
-        private TextView tv_title;
+    Custom${NAME}Binding binding;
 
         private ${NAME}ViewHolder(@NonNull View itemView) {
             super(itemView);
-
-            tv_title = itemView.findViewById(R.id.custom_tv_title);
-
+           binding = Custom${NAME}Binding.bind(itemView);
         }
 
-        @SuppressLint("SetTextI18n")
         private void bind(${Model_Name} model) {
 
         }
