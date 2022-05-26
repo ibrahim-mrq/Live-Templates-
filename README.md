@@ -11,32 +11,6 @@
 <b>
 <b>
     
-## BaseAdapter
-
-```java
-    
-BaseAdapter<$model$> adapter = new BaseAdapter<$model$>($context$, list) {
-            @Override
-            public RecyclerView.ViewHolder setViewHolder(android.view.ViewGroup parent) {
-                final android.view.View view = android.view.LayoutInflater.from(getApplicationContext())
-                        .inflate(R.layout.$layout$, parent, false);
-                return new $holder$(getApplicationContext(), view);
-            }
-
-            @Override
-            public void onBindData(RecyclerView.ViewHolder holders, Inbox val) {
-                $holder$ holder = ($holder$) holders;
-//                com.bumptech.glide.Glide.with($context$).load("")
-//                        .placeholder(R.drawable.ic_launcher_background).into(holder.img);
-//                holder.getText().setText(val.getTitle());
-            }
-        };
-        rv.setAdapter(adapter);
-    
-    
-   
-```
-    
 ## fun
 
 ```java
@@ -44,6 +18,22 @@ BaseAdapter<$model$> adapter = new BaseAdapter<$model$>($context$, list) {
 private void $Name$() {
 
 }
+
+```
+    
+## replaceFragment
+
+```java
+    
+    public static void replaceFragment(Fragment fragment, @StringRes int title) {
+//        binding.main.appbar.tvTool.setText(title);
+//        FragmentManager manager = getSupportFragmentManager();
+        FragmentManager manager = ((FragmentActivity) context).getSupportFragmentManager();
+        FragmentTransaction transaction = manager.beginTransaction();
+        transaction.replace(R.id.main_nav_host_fragment, fragment);
+        transaction.addToBackStack("TAG");
+        transaction.commit();
+    }
 
 ```
     
@@ -609,5 +599,32 @@ public class ${NAME}Adapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
 
 
 ```
+## BaseAdapter
 
+```java
+    
+BaseAdapter<$model$> adapter = new BaseAdapter<$model$>($context$, list) {
+            @Override
+            public RecyclerView.ViewHolder setViewHolder(android.view.ViewGroup parent) {
+                final android.view.View view = android.view.LayoutInflater.from(getApplicationContext())
+                        .inflate(R.layout.$layout$, parent, false);
+                return new $holder$(getApplicationContext(), view);
+            }
+
+            @Override
+            public void onBindData(RecyclerView.ViewHolder holders, Inbox val) {
+                $holder$ holder = ($holder$) holders;
+//                com.bumptech.glide.Glide.with($context$).load("")
+//                        .placeholder(R.drawable.ic_launcher_background).into(holder.img);
+//                holder.getText().setText(val.getTitle());
+            }
+        };
+        rv.setAdapter(adapter);
+    
+    
+   
+```
+    
+    
+    
 
