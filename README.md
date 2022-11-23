@@ -216,6 +216,54 @@ public class ${NAME}Adapter extends RecyclerView.Adapter<${NAME}Adapter.${NAME}V
 ```
 
 
+```kotlin
+    
+#if (${PACKAGE_NAME} && ${PACKAGE_NAME} != "")package ${PACKAGE_NAME};#end
+
+import android.content.Context;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.RecyclerView;
+import java.util.ArrayList;
+
+public class ${NAME}Adapter(val context: Context) : RecyclerView.Adapter<${NAME}Adapter.${NAME}ViewHolder>() {
+
+    var list = emptyList<${Model_Name}>()
+
+    class ${NAME}ViewHolder (val binding: Custom${NAME}Binding) : RecyclerView.ViewHolder(binding.root)
+        
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ${NAME}ViewHolder {
+    return ${NAME}ViewHolder(
+           Custom${NAME}Binding.inflate(
+               LayoutInflater.from(parent.context),
+               parent,
+               false
+            )
+        )
+    }
+
+    override fun onBindViewHolder(holder: ${NAME}ViewHolder, position: Int) {
+        val model = list[position]
+
+    }
+       override fun getItemCount(): Int {
+        return list.size
+    }
+    
+ fun setData(newList: List<Person>) {
+        list = newList
+        notifyDataSetChanged()
+    }
+
+
+}
+
+
+```
+
+
 ## Adapter Filter
 
 ```java
