@@ -218,17 +218,14 @@ public class ${NAME}Adapter extends RecyclerView.Adapter<${NAME}Adapter.${NAME}V
 
 ```kotlin
     
-#if (${PACKAGE_NAME} && ${PACKAGE_NAME} != "")package ${PACKAGE_NAME};#end
+#if (${PACKAGE_NAME} && ${PACKAGE_NAME} != "")package ${PACKAGE_NAME}#end
 
-import android.content.Context;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import androidx.annotation.NonNull;
-import androidx.recyclerview.widget.RecyclerView;
-import java.util.ArrayList;
+import android.content.Context
+import android.view.LayoutInflater
+import android.view.ViewGroup
+import androidx.recyclerview.widget.RecyclerView
 
-public class ${NAME}Adapter(val context: Context) : RecyclerView.Adapter<${NAME}Adapter.${NAME}ViewHolder>() {
+class ${NAME}Adapter(val context: Context) : RecyclerView.Adapter<${NAME}Adapter.${NAME}ViewHolder>() {
 
     var list = emptyList<${Model_Name}>()
 
